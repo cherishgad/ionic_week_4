@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ItemSliding } from 'ionic-angular';
-//import { Task } from './task';
+import { Task } from './task';
 import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 @Component({
   selector: 'page-tasklist',
@@ -18,11 +18,11 @@ export class TaskListPage {
       this.tasks.push({ title: theNewTask, status: 'open' }); 
     } 
   }
-  markAsDone(slidingItem: ItemSliding, task: any) {
+  markAsDone(slidingItem: ItemSliding, task: Task) {
      this.tasks.update(task.$key, { status: 'done' });
      slidingItem.close(); 
   } 
-  removeTask(slidingItem: ItemSliding, task: any) { 
+  removeTask(slidingItem: ItemSliding, task: Task) { 
     this.tasks.remove(task.$key);
     slidingItem.close(); 
   }
