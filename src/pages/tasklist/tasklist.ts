@@ -2,17 +2,19 @@ import { Component } from '@angular/core';
 import { NavController, ItemSliding } from 'ionic-angular';
 import { Task } from './task';
 import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import { Dialogs } from '@ionic-native/dialogs';
 @Component({
   selector: 'page-tasklist',
   templateUrl: 'tasklist.html'
 })
 export class TaskListPage {
   tasks: FirebaseListObservable<any[]>;
-  constructor(public navCtrl: NavController, public af: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public af: AngularFireDatabase, public dialogs: Dialogs) {
     this.tasks = af.list('/tasks');
 
   }
   addItem() {//message box for geting the user updating input 
+    
     let theNewTask: string = prompt("New Task"); 
     if (theNewTask !== '') { 
       this.tasks.push({ title: theNewTask, status: 'open' }); 
