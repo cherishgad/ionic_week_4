@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, ItemSliding } from 'ionic-angular';
+import { Task } from './task';
 
 @Component({
   selector: 'page-tasklist',
   templateUrl: 'tasklist.html'
 })
 export class TaskListPage {
-  tasks: Array<any> = [];
+  tasks: Array<Task> = [];
   constructor(public navCtrl: NavController) {
     this.tasks = [ 
       {title:'Milk', status: 'open'}, 
@@ -22,11 +23,11 @@ export class TaskListPage {
       this.tasks.push({ title: theNewTask, status: 'open' }); 
     } 
   }
-  markAsDone(slidingItem: ItemSliding, task: any) {
+  markAsDone(slidingItem: ItemSliding, task: Task) {
      task.status = "done";
      slidingItem.close(); 
   } 
-  removeTask(slidingItem: ItemSliding, task: any) { 
+  removeTask(slidingItem: ItemSliding, task: Task) { 
     task.status = "removed"; 
     let index = this.tasks.indexOf(task); 
     if (index > -1) { 
