@@ -14,7 +14,7 @@ export class TaskListPage {
 
   }
   addItem() {//message box for geting the user updating input 
-    /*this.dialogs.prompt('Add a task', 'Ionic2Do', 
+    this.dialogs.prompt('Add a task', 'Ionic2Do', 
                                 ['Ok', 'Cancel'], '').then(
       theResult => {
         if ((theResult.buttonIndex ==  1)
@@ -22,11 +22,12 @@ export class TaskListPage {
           this.tasks.push({ title: theResult.input1, status: 'open'});
         }
       }
-    )*/
+    )
+    /*
     let theNewTask: string = prompt("New Task"); 
     if (theNewTask !== '') { 
       this.tasks.push({ title: theNewTask, status: 'open' }); 
-    } 
+    } */
   }
   markAsDone(slidingItem: ItemSliding, task: Task) {
      this.tasks.update(task.$key, { status: 'done' });
